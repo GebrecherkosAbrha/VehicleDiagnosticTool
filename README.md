@@ -21,7 +21,7 @@ The Vehicle Diagnostic Tool is designed to diagnose potential issues in vehicle 
 
 2. Navigate to the project directory:
    ```bash
-   cd vehicle-diagnostic-tool
+   cd VehicleDiagnosticTool
    ```
 
 ## Usage
