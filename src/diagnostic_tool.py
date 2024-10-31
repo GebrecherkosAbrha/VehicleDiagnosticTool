@@ -3,6 +3,7 @@ from components.battery import Battery
 from components.tire import Tire
 from data_generator import DataGenerator
 
+
 class DiagnosticTool:
     def __init__(self):
         self.engine = Engine()
@@ -32,14 +33,14 @@ class DiagnosticTool:
                 print(f"  - {issue}")
         else:
             print("  No issues detected")
-        
+
         print("\nBattery:")
         if self.battery_issues:
             for issue in self.battery_issues:
                 print(f"  - {issue}")
         else:
             print("  No issues detected")
-        
+
         for i, issues in enumerate(self.tire_issues):
             print(f"\nTire {i+1}:")
             if issues:
@@ -47,5 +48,5 @@ class DiagnosticTool:
                     print(f"  - {issue}")
             else:
                 print("  No issues detected")
-        
+
         print("\nDiagnostics complete.")

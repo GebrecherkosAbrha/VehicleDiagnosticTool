@@ -1,16 +1,13 @@
-class Battery:
-    def __init__(self):
-        self.charge = 100
-        self.voltage = 12
+from config import DIAGNOSTIC_THRESHOLDS
 
+
+class Battery:
     def diagnose(self, data):
-        self.charge = data['battery_charge']
-        self.voltage = data['battery_voltage']
-        
         issues = []
-        if self.charge < 25:
-            issues.append(f"Battery charge is low ({self.charge}%)")
-        if self.voltage < 11.5:
-            issues.append(f"Battery voltage is low ({self.voltage}V)")
-        
+        if data['battery_voltage'] < 12.0:
+            issues.append(f"Battery voltage is low ({
+                          data['battery_voltage']} V)")
+        if data['battery_health'] < 70:
+            issues.append(f"Battery health is poor ({
+                          data['battery_health']}%)")
         return issues

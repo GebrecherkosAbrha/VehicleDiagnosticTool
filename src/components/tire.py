@@ -1,18 +1,17 @@
-class Tire:
-    def __init__(self):
-        self.pressure = 32
-        self.tread_depth = 8
+from config import DIAGNOSTIC_THRESHOLDS
 
+
+class Tire:
     def diagnose(self, data):
-        self.pressure = data['tire_pressure']
-        self.tread_depth = data['tire_tread_depth']
-        
         issues = []
-        if self.pressure < 28:
-            issues.append(f"Tire pressure is low ({self.pressure} PSI)")
-        elif self.pressure > 35:
-            issues.append(f"Tire pressure is high ({self.pressure} PSI)")
-        if self.tread_depth < 3:
-            issues.append(f"Tire tread depth is low ({self.tread_depth} mm)")
-        
+        if data['tire_pressure'] < DIAGNOSTIC_THRESHOLDS['tire_pressure']['min']:
+            issues.append(
+                f"Tire pressure is low ({data['tire_pressure']} PSI)")
+        elif data['tire_pressure'] > DIAGNOSTIC_THRESHOLDS['tire_pressure']['max']:
+            issues.append(f"Tire pressure is high ({
+                          data['tire_pressure']} PSI)")
+
+        if data['tire_tread_depth'] < DIAGNOSTIC_THRESHOLDS['tire_tread_depth']['min']:
+            issues.append(f"Tire tread depth is low ({
+                          data['tire_tread_depth']} mm)")
         return issues

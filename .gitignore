@@ -9,7 +9,7 @@ venv/
 # Ignore VS Code specific files
 .vscode/
 
-# Ignore system files
+# Ignore system files     
 .DS_Store
 Thumbs.db
 
